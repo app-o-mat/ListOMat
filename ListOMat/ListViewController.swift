@@ -46,8 +46,9 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
-        let object = list?.items[indexPath.row]
-        cell.textLabel!.text = object?.name
+        let listItem = list?.items[indexPath.row]
+        cell.textLabel!.text = listItem?.name
+        cell.accessoryType = (listItem?.done ?? false) ? .checkmark : .none
         return cell
     }
 
@@ -79,6 +80,17 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard var list = list else { return }
+
+        toggleDoneListItem(from: &list, at: indexPath.row)
+        self.list = list
+        self.delegate?.listDidChange(list: list)
+
+        self.tableView.deselectRow(at: indexPath, animated: true)
+        self.tableView.reloadRows(at: [indexPath], with: .automatic)
     }
 
     var list: List? {

@@ -68,8 +68,9 @@ class ListsViewController: UITableViewController, ListViewControllerDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
-        let object = lists[indexPath.row]
-        cell.textLabel!.text = object.name
+        let list = self.lists[indexPath.row]
+        cell.textLabel!.text = list.name
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
 

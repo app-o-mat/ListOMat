@@ -24,6 +24,12 @@ struct List: Decodable, Encodable {
     mutating func removeItem(at index: Int) {
         items.remove(at: index)
     }
+
+    mutating func toggleDone(at index: Int) {
+        var item = items[index]
+        item = ListItem(name: item.name, done: !item.done)
+        items[index] = item
+    }
 }
 
 typealias Lists = [List]
@@ -44,4 +50,8 @@ func addListItem(to list: inout List, name: String, at index: Int) {
 
 func removeListItem(from list: inout List, at index: Int) {
     list.removeItem(at: index)
+}
+
+func toggleDoneListItem(from list: inout List, at index: Int) {
+    list.toggleDone(at: index)
 }
