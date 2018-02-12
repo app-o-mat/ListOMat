@@ -69,7 +69,8 @@ class ListsViewController: UITableViewController, ListViewControllerDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
         let list = self.lists[indexPath.row]
-        cell.textLabel!.text = list.name
+        cell.textLabel?.text = list.name
+        cell.detailTextLabel?.text = list.completedString
         cell.accessoryType = .disclosureIndicator
         return cell
     }
@@ -90,6 +91,7 @@ class ListsViewController: UITableViewController, ListViewControllerDelegate {
 
     func listDidChange(list: List) {
         self.lists[listIndex] = list
+        self.tableView.reloadRows(at: [IndexPath(row: listIndex, section: 0 )], with: .automatic)
         save(lists: lists)
     }
 

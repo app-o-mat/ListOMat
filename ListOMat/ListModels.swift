@@ -30,6 +30,12 @@ struct List: Decodable, Encodable {
         item = ListItem(name: item.name, done: !item.done)
         items[index] = item
     }
+
+    var completedString: String {
+        get {
+            return "(\(items.filter {$0.done}.count ) of \(items.count) completed)"
+        }
+    }
 }
 
 typealias Lists = [List]
