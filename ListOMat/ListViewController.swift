@@ -12,12 +12,12 @@ class ListViewController: UIViewController {
 
     @IBOutlet weak var detailDescriptionLabel: UILabel!
 
-
     func configureView() {
         // Update the user interface for the detail item.
-        if let detail = detailItem {
+        if let list = list {
+            self.title = list.name
             if let label = detailDescriptionLabel {
-                label.text = detail.description
+                label.text = list.name
             }
         }
     }
@@ -33,7 +33,7 @@ class ListViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    var detailItem: NSDate? {
+    var list: List? {
         didSet {
             // Update the view.
             configureView()

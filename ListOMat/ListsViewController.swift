@@ -11,8 +11,7 @@ import UIKit
 class ListsViewController: UITableViewController {
 
     var listViewController: ListViewController? = nil
-    var objects = [Any]()
-
+    var lists = loadLists()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +38,7 @@ class ListsViewController: UITableViewController {
 
     @objc
     func insertNewObject(_ sender: Any) {
-        objects.insert(NSDate(), at: 0)
+        addList(to: &lists, name: "List \(lists.count)", at: 0)
         let indexPath = IndexPath(row: 0, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
     }
@@ -49,9 +48,8 @@ class ListsViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showList" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                let object = objects[indexPath.row] as! NSDate
                 let controller = (segue.destination as! UINavigationController).topViewController as! ListViewController
-                controller.detailItem = object
+                controller.list = lists[indexPath.row]
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
@@ -65,14 +63,14 @@ class ListsViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objects.count
+        return lists.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
-        let object = objects[indexPath.row] as! NSDate
-        cell.textLabel!.text = object.description
+        let object = lists[indexPath.row]
+        cell.textLabel!.text = object.name
         return cell
     }
 
@@ -83,7 +81,7 @@ class ListsViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            objects.remove(at: indexPath.row)
+            removeList(from: &lists, at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
