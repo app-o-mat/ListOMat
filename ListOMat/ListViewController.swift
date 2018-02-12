@@ -63,6 +63,24 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.insertRows(at: [indexPath], with: .automatic)
     }
 
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        guard var list = list else { return }
+
+        if editingStyle == .delete {
+            removeListItem(from: &list, at: indexPath.row)
+            self.list = list
+            self.delegate?.listDidChange(list: list)
+
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+        }
+    }
+
     var list: List? {
         didSet {
             // Update the view.
