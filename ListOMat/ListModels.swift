@@ -15,7 +15,15 @@ struct ListItem: Decodable, Encodable {
 
 struct List: Decodable, Encodable {
     let name: String
-    let items: [ListItem]
+    var items: [ListItem]
+
+    mutating func addItem(name: String, at index: Int) {
+        items.insert(ListItem(name: name, done: false), at: index)
+    }
+
+    mutating func removeItem(at index: Int) {
+        items.remove(at: index)
+    }
 }
 
 typealias Lists = [List]
@@ -28,4 +36,12 @@ func addList(to lists: inout Lists, name: String, at index: Int) {
 func removeList(from lists: inout Lists, at index: Int) {
     lists.remove(at: index)
     save(lists: lists)
+}
+
+func addListItem(to list: inout List, name: String, at index: Int) {
+    list.addItem(name: name, at: index)
+}
+
+func removeListItem(from list: inout List, at index: Int) {
+    list.removeItem(at: index)
 }

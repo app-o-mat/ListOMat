@@ -8,10 +8,11 @@
 
 import UIKit
 
-class ListsViewController: UITableViewController {
+class ListsViewController: UITableViewController, ListViewControllerDelegate {
 
     var listViewController: ListViewController? = nil
     var lists = loadLists()
+    var listIndex: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,8 +49,10 @@ class ListsViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showList" {
             if let indexPath = tableView.indexPathForSelectedRow {
+                listIndex = indexPath.row
                 let controller = (segue.destination as! UINavigationController).topViewController as! ListViewController
-                controller.list = lists[indexPath.row]
+                controller.delegate = self
+                controller.list = lists[listIndex]
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
@@ -57,10 +60,6 @@ class ListsViewController: UITableViewController {
     }
 
     // MARK: - Table View
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return lists.count
@@ -88,6 +87,10 @@ class ListsViewController: UITableViewController {
         }
     }
 
+    func listDidChange(list: List) {
+        self.lists[listIndex] = list
+        save(lists: lists)
+    }
 
 }
 
