@@ -127,8 +127,34 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="List-o-Mat" id="Zdf-7t-Un8"/>
+                    <connections>
+                        <outlet property="popupTextField" destination="i0Y-nW-hu8" id="lp2-yD-Y76"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="i0Y-nW-hu8" customClass="PopupTextFieldView" customModule="ListOMat" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="List Name" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1ZZ-2N-dpk">
+                            <rect key="frame" x="8" y="8" width="304" height="44"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="M8b-CP-pRf" firstAttribute="trailing" secondItem="1ZZ-2N-dpk" secondAttribute="trailing" constant="8" id="Mev-yv-L9u"/>
+                        <constraint firstItem="M8b-CP-pRf" firstAttribute="bottom" secondItem="1ZZ-2N-dpk" secondAttribute="bottom" constant="8" id="adR-Nu-8vi"/>
+                        <constraint firstItem="1ZZ-2N-dpk" firstAttribute="leading" secondItem="M8b-CP-pRf" secondAttribute="leading" constant="8" id="fsY-A7-JkG"/>
+                        <constraint firstItem="1ZZ-2N-dpk" firstAttribute="top" secondItem="M8b-CP-pRf" secondAttribute="top" constant="8" id="voB-uC-tJK"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="M8b-CP-pRf"/>
+                    <connections>
+                        <outlet property="textField" destination="1ZZ-2N-dpk" id="mNU-hN-LaC"/>
+                    </connections>
+                </view>
             </objects>
             <point key="canvasLocation" x="709" y="-630"/>
         </scene>

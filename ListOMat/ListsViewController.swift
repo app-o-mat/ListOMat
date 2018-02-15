@@ -8,23 +8,27 @@
 
 import UIKit
 
-class ListsViewController: UITableViewController, ListViewControllerDelegate {
+class ListsViewController: UITableViewController, ListViewControllerDelegate, PopupTextFieldViewDelegate {
 
     var listViewController: ListViewController? = nil
     var lists = loadLists()
     var listIndex: Int = 0
+
+    @IBOutlet var popupTextField: PopupTextFieldView! = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         navigationItem.leftBarButtonItem = editButtonItem
 
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addListTapped(_:)))
         navigationItem.rightBarButtonItem = addButton
         if let split = splitViewController {
             let controllers = split.viewControllers
             listViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? ListViewController
         }
+
+        popupTextField.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -38,10 +42,27 @@ class ListsViewController: UITableViewController, ListViewControllerDelegate {
     }
 
     @objc
-    func insertNewObject(_ sender: Any) {
-        addList(to: &lists, name: "List \(lists.count)", at: 0)
+    func addListTapped(_ sender: Any) {
+        guard let mainView = self.view.superview else { return }
+
+        popupTextField.translatesAutoresizingMaskIntoConstraints = false
+
+        mainView.addSubview(popupTextField)
+        popupTextField.leadingAnchor.constraint(equalTo: mainView.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        popupTextField.trailingAnchor.constraint(equalTo: mainView.safeAreaLayoutGuide.trailingAnchor).isActive = true
+
+        mainView.layoutIfNeeded()
+        DispatchQueue.main.async {
+            self.popupTextField.textField.becomeFirstResponder()
+        }
+    }
+
+    func onTextEntered(text: String) {
+        ListOMat.addList(to: &lists, name: text, at: 0)
         let indexPath = IndexPath(row: 0, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
+        popupTextField.resignFirstResponder()
+        popupTextField.removeFromSuperview()
     }
 
     // MARK: - Segues
