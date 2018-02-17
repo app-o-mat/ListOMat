@@ -36,6 +36,11 @@ class ListsViewController: UITableViewController, ListViewControllerDelegate, Po
         super.viewWillAppear(animated)
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        dismissPopupTextField()
+        super.viewWillDisappear(animated)
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -44,6 +49,14 @@ class ListsViewController: UITableViewController, ListViewControllerDelegate, Po
     @objc
     func addListTapped(_ sender: Any) {
         guard let mainView = self.view.superview else { return }
+        if popupTextField.superview != nil {
+            popupTextField.textField.becomeFirstResponder()
+            return
+        }
+
+        navigationItem.rightBarButtonItem?.isEnabled = false
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(addListCancelTapped(_:)))
+        navigationItem.leftBarButtonItem = cancelButton
 
         popupTextField.translatesAutoresizingMaskIntoConstraints = false
 
@@ -61,8 +74,19 @@ class ListsViewController: UITableViewController, ListViewControllerDelegate, Po
         ListOMat.addList(to: &lists, name: text, at: 0)
         let indexPath = IndexPath(row: 0, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
+        dismissPopupTextField()
+    }
+
+    @objc
+    func addListCancelTapped(_ sender: Any) {
+        dismissPopupTextField()
+    }
+
+    func dismissPopupTextField() {
         popupTextField.resignFirstResponder()
         popupTextField.removeFromSuperview()
+        navigationItem.rightBarButtonItem?.isEnabled = true
+        navigationItem.leftBarButtonItem = editButtonItem
     }
 
     // MARK: - Segues
@@ -108,6 +132,11 @@ class ListsViewController: UITableViewController, ListViewControllerDelegate, Po
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
+    }
+
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        dismissPopupTextField()
+        return indexPath
     }
 
     func listDidChange(list: List) {
