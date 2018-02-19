@@ -1,0 +1,1 @@
+convert -resize $1 appicon.png appicon-$1-0.png
