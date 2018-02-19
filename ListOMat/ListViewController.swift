@@ -12,9 +12,11 @@ protocol ListViewControllerDelegate: class {
     func listDidChange(list: List)
 }
 
-class ListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, PopupTextFieldViewDelegate, PopupTextFieldViewViewController {
 
     @IBOutlet weak var tableView: UITableView!
+
+    var popupTextField: PopupTextFieldView? = nil
 
     weak var delegate: ListViewControllerDelegate?
 
@@ -28,7 +30,10 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
+        popupTextField = Bundle.main.loadNibNamed("PopupTextFieldView", owner: self, options: [:])?.first as? PopupTextFieldView
+        popupTextField!.delegate = self
+
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addListTapped(_:)))
         navigationItem.rightBarButtonItem = addButton
 
         self.tableView.dataSource = self
@@ -38,6 +43,33 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         configureView()
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        dismissPopupTextField()
+        super.viewWillDisappear(animated)
+    }
+
+    @objc
+    func addListTapped(_ sender: Any) {
+        guard let mainView = self.view.superview else { return }
+        guard let popupTextField = self.popupTextField, addPopupTextField(mainView: mainView, popupTextField: popupTextField) else { return }
+
+        navigationItem.rightBarButtonItem?.isEnabled = false
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(addListCancelTapped(_:)))
+        navigationItem.leftBarButtonItem = cancelButton
+    }
+    
+    @objc
+    func addListCancelTapped(_ sender: Any) {
+        dismissPopupTextField()
+    }
+
+    func dismissPopupTextField() {
+        navigationItem.rightBarButtonItem?.isEnabled = true
+        navigationItem.leftBarButtonItem = nil
+
+        guard let popupTextField = self.popupTextField else { return }
+        dismiss(popupTextField: popupTextField)
+    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return list?.items.count ?? 0
@@ -52,16 +84,17 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return cell
     }
 
-    @objc
-    func insertNewObject(_ sender: Any) {
+    func onTextEntered(text: String) {
         guard var list = list else { return }
 
-        addListItem(to: &list, name: "Item \(list.items.count)", at: 0)
+        addListItem(to: &list, name: text, at: list.items.count)
         self.list = list
         self.delegate?.listDidChange(list: list)
 
-        let indexPath = IndexPath(row: 0, section: 0)
+        let indexPath = IndexPath(row: list.items.count - 1, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
+
+        dismissPopupTextField()
     }
 
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -84,7 +117,8 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard var list = list else { return }
-
+        dismissPopupTextField()
+        
         toggleDoneListItem(from: &list, at: indexPath.row)
         self.list = list
         self.delegate?.listDidChange(list: list)
