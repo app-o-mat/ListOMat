@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9AC8BE54203B067600CCC7B8 /* PopupTextFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AC8BE53203B067600CCC7B8 /* PopupTextFieldView.xib */; };
 		9AE402882030852800C33404 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE402872030852800C33404 /* AppDelegate.swift */; };
 		9AE4028A2030852800C33404 /* ListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE402892030852800C33404 /* ListsViewController.swift */; };
 		9AE4028C2030852800C33404 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE4028B2030852800C33404 /* ListViewController.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9AC8BE53203B067600CCC7B8 /* PopupTextFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopupTextFieldView.xib; sourceTree = "<group>"; };
 		9AE402842030852800C33404 /* ListOMat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ListOMat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AE402872030852800C33404 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9AE402892030852800C33404 /* ListsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				9AE4029B2030895F00C33404 /* ListModels.swift */,
 				9AE4029D20308A5D00C33404 /* ListStore.swift */,
 				9AE4029F2035B2CC00C33404 /* PopupTextFieldView.swift */,
+				9AC8BE53203B067600CCC7B8 /* PopupTextFieldView.xib */,
 			);
 			path = ListOMat;
 			sourceTree = "<group>";
@@ -138,6 +141,7 @@
 				9AE402942030852800C33404 /* LaunchScreen.storyboard in Resources */,
 				9AE402912030852800C33404 /* Assets.xcassets in Resources */,
 				9AE4028F2030852800C33404 /* Main.storyboard in Resources */,
+				9AC8BE54203B067600CCC7B8 /* PopupTextFieldView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

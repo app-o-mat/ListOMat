@@ -12,6 +12,38 @@ protocol PopupTextFieldViewDelegate {
     func onTextEntered(text: String)
 }
 
+protocol PopupTextFieldViewViewController {
+    func addPopupTextField(mainView: UIView, popupTextField: PopupTextFieldView) -> Bool
+    func dismiss(popupTextField: PopupTextFieldView)
+}
+
+extension PopupTextFieldViewViewController where Self: UIViewController {
+    func addPopupTextField(mainView: UIView, popupTextField: PopupTextFieldView) -> Bool {
+        if popupTextField.superview != nil {
+            popupTextField.textField.becomeFirstResponder()
+            return false
+        }
+
+        popupTextField.translatesAutoresizingMaskIntoConstraints = false
+
+        mainView.addSubview(popupTextField)
+        popupTextField.leadingAnchor.constraint(equalTo: mainView.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        popupTextField.trailingAnchor.constraint(equalTo: mainView.safeAreaLayoutGuide.trailingAnchor).isActive = true
+
+        mainView.layoutIfNeeded()
+        DispatchQueue.main.async {
+            popupTextField.textField.becomeFirstResponder()
+        }
+
+        return true
+    }
+
+    func dismiss(popupTextField: PopupTextFieldView) {
+        popupTextField.resignFirstResponder()
+        popupTextField.removeFromSuperview()
+    }
+}
+
 class PopupTextFieldView: UIView, UITextFieldDelegate {
 
     @IBOutlet var textField: UITextField! = nil

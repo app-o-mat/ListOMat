@@ -8,17 +8,20 @@
 
 import UIKit
 
-class ListsViewController: UITableViewController, ListViewControllerDelegate, PopupTextFieldViewDelegate {
+class ListsViewController: UITableViewController, ListViewControllerDelegate, PopupTextFieldViewDelegate, PopupTextFieldViewViewController {
 
     var listViewController: ListViewController? = nil
     var lists = loadLists()
     var listIndex: Int = 0
 
-    @IBOutlet var popupTextField: PopupTextFieldView! = nil
+    var popupTextField: PopupTextFieldView! = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        popupTextField = Bundle.main.loadNibNamed("PopupTextFieldView", owner: self, options: [:])?.first as! PopupTextFieldView
+        popupTextField.delegate = self
+
         navigationItem.leftBarButtonItem = editButtonItem
 
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addListTapped(_:)))
@@ -27,8 +30,6 @@ class ListsViewController: UITableViewController, ListViewControllerDelegate, Po
             let controllers = split.viewControllers
             listViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? ListViewController
         }
-
-        popupTextField.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -49,25 +50,11 @@ class ListsViewController: UITableViewController, ListViewControllerDelegate, Po
     @objc
     func addListTapped(_ sender: Any) {
         guard let mainView = self.view.superview else { return }
-        if popupTextField.superview != nil {
-            popupTextField.textField.becomeFirstResponder()
-            return
-        }
+        guard addPopupTextField(mainView: mainView, popupTextField: popupTextField) else { return }
 
         navigationItem.rightBarButtonItem?.isEnabled = false
         let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(addListCancelTapped(_:)))
         navigationItem.leftBarButtonItem = cancelButton
-
-        popupTextField.translatesAutoresizingMaskIntoConstraints = false
-
-        mainView.addSubview(popupTextField)
-        popupTextField.leadingAnchor.constraint(equalTo: mainView.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        popupTextField.trailingAnchor.constraint(equalTo: mainView.safeAreaLayoutGuide.trailingAnchor).isActive = true
-
-        mainView.layoutIfNeeded()
-        DispatchQueue.main.async {
-            self.popupTextField.textField.becomeFirstResponder()
-        }
     }
 
     func onTextEntered(text: String) {
@@ -83,8 +70,7 @@ class ListsViewController: UITableViewController, ListViewControllerDelegate, Po
     }
 
     func dismissPopupTextField() {
-        popupTextField.resignFirstResponder()
-        popupTextField.removeFromSuperview()
+        dismiss(popupTextField: popupTextField)
         navigationItem.rightBarButtonItem?.isEnabled = true
         navigationItem.leftBarButtonItem = editButtonItem
     }
