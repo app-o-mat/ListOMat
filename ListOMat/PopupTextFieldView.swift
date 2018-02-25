@@ -53,7 +53,7 @@ class PopupTextFieldView: UIView, UITextFieldDelegate {
     override func didMoveToSuperview() {
         if let sv = self.superview {
             textField.text = ""
-            popupBottomContraint = self.bottomAnchor.constraint(equalTo: sv.safeAreaLayoutGuide.bottomAnchor, constant: 0)
+            popupBottomContraint = self.bottomAnchor.constraint(equalTo: sv.bottomAnchor, constant: 0)
             popupBottomContraint?.isActive = true
 
             self.textField.delegate = self
