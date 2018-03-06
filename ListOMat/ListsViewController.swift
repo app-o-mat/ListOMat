@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Intents
 
 class ListsViewController: UITableViewController, ListViewControllerDelegate, PopupTextFieldViewDelegate, PopupTextFieldViewViewController {
 
@@ -30,6 +31,8 @@ class ListsViewController: UITableViewController, ListViewControllerDelegate, Po
             let controllers = split.viewControllers
             listViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? ListViewController
         }
+
+        INPreferences.requestSiriAuthorization { (status) in }
     }
 
     override func viewWillAppear(_ animated: Bool) {
