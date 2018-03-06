@@ -20,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9A5E606B203B263F006CAB2D /* ListOMat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ListOMat.entitlements; sourceTree = "<group>"; };
 		9AC8BE53203B067600CCC7B8 /* PopupTextFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopupTextFieldView.xib; sourceTree = "<group>"; };
 		9AE402842030852800C33404 /* ListOMat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ListOMat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AE402872030852800C33404 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +65,7 @@
 		9AE402862030852800C33404 /* ListOMat */ = {
 			isa = PBXGroup;
 			children = (
+				9A5E606B203B263F006CAB2D /* ListOMat.entitlements */,
 				9AE402872030852800C33404 /* AppDelegate.swift */,
 				9AE402892030852800C33404 /* ListsViewController.swift */,
 				9AE4028B2030852800C33404 /* ListViewController.swift */,
@@ -294,6 +296,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ListOMat/ListOMat.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 85H8KB76TX;
 				INFOPLIST_FILE = ListOMat/Info.plist;
@@ -309,6 +312,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ListOMat/ListOMat.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 85H8KB76TX;
 				INFOPLIST_FILE = ListOMat/Info.plist;
