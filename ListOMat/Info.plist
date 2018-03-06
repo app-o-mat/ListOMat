@@ -26,6 +26,15 @@
 	<string>Main</string>
 	<key>NSSiriUsageDescription</key>
 	<string>Your requests about lists will be sent to Siri</string>
+	<key>INAlternativeAppNames</key>
+	<array>
+		<dict>
+			<key>INAlternativeAppName</key>
+			<string>ListOMat</string>
+			<key>INAlternativeAppNamePronunciationHint</key>
+			<string>list oh mat</string>
+		</dict>
+	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
