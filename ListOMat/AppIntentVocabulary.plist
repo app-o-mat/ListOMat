@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IntentPhrases</key>
+	<array>
+		<dict>
+			<key>IntentName</key>
+			<string>INSearchForNotebookItemsIntent</string>
+			<key>IntentExamples</key>
+			<array>
+				<string>In ListOMat, show my Grocery Store list</string>
+				<string>In ListOMat, show all lists</string>
+			</array>
+		</dict>
+		<dict>
+			<key>IntentName</key>
+			<string>INAddTasksIntent</string>
+			<key>IntentExamples</key>
+			<array>
+				<string>In ListOMat, add Apples to the Grocery Store list</string>
+				<string>In ListOMat, add Olives and Cheese to the Grocery Store list</string>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>
