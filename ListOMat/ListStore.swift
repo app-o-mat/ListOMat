@@ -10,8 +10,12 @@ import Foundation
 
 private let fileName = "lists.json"
 
+func documentsFolder() -> URL? {
+    return FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.app-o-mat.ListOMat")
+}
+
 func loadLists() -> Lists {
-    guard let docsDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+    guard let docsDir = documentsFolder() else {
         return []
     }
 
@@ -36,12 +40,13 @@ func loadLists() -> Lists {
 }
 
 func save(lists: Lists) {
-    guard let docsDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+    guard let docsDir = documentsFolder() else {
         fatalError("no docs dir")
     }
 
     let url = docsDir.appendingPathComponent(fileName, isDirectory: false)
 
+    // Encode lists as JSON and save to url
     let encoder = JSONEncoder()
     do {
         let listData = try encoder.encode(lists)
