@@ -28,8 +28,8 @@ class AddItemsIntentHandler: ListOMatIntentsHandler, INAddTasksIntentHandling {
             let listIndex = lists.index(where: { $0.name.lowercased() == taskList.title.spokenPhrase.lowercased() }),
             let itemNames = intent.taskTitles, itemNames.count > 0
         else {
-                completion(INAddTasksIntentResponse(code: .failure, userActivity: nil))
-                return
+            completion(INAddTasksIntentResponse(code: .failure, userActivity: nil))
+            return
         }
 
         // Get the list
