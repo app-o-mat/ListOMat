@@ -129,6 +129,50 @@ class ListsViewController: UITableViewController, ListViewControllerDelegate, Po
         }
     }
 
+    func deleteAction(forRowAt indexPath: IndexPath) -> UIContextualAction {
+        return UIContextualAction(style: .destructive, title: "Delete") {
+            [weak self] (contextAction: UIContextualAction, sourceView: UIView, completionHandler: (Bool) -> Void) in
+
+            guard let self = self else { return }
+            removeList(from: &self.lists, at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
+            completionHandler(true)
+        }
+    }
+
+    func copyAction(forRowAt indexPath: IndexPath) -> UIContextualAction {
+        return UIContextualAction(style: .normal, title: "Copy") {
+            [weak self] (contextAction: UIContextualAction, sourceView: UIView, completionHandler: (Bool) -> Void) in
+
+            guard let self = self else { return }
+
+            let formatter = DateFormatter()
+            formatter.dateStyle = .medium
+            formatter.timeStyle = .none
+
+            let sourceList = self.lists[indexPath.row]
+            ListOMat.addList(to: &self.lists, name: sourceList.name + " (\(formatter.string(from: Date())))", at: 0)
+            var l = self.lists[0]
+            for i in sourceList.items {
+                l.addItem(name: i.name, at: l.items.count)
+            }
+            self.lists[0] = l
+            ListOMat.save(lists: self.lists)
+
+            let indexPath = IndexPath(row: 0, section: 0)
+            self.tableView.insertRows(at: [indexPath], with: .automatic)
+
+            completionHandler(true)
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        return UISwipeActionsConfiguration(actions: [
+            deleteAction(forRowAt: indexPath),
+            copyAction(forRowAt: indexPath),
+            ])
+    }
+
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         dismissPopupTextField()
         return indexPath
