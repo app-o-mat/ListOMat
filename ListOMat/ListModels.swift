@@ -61,3 +61,16 @@ func removeListItem(from list: inout List, at index: Int) {
 func toggleDoneListItem(from list: inout List, at index: Int) {
     list.toggleDone(at: index)
 }
+
+func copyList(from lists: inout Lists, atIndex: Int, name: String, toIndex: Int) {
+    let sourceList = lists[atIndex]
+    lists.insert(List(name: name, items: sourceList.items), at: toIndex)
+
+    var l = lists[0]
+    for (index, item) in l.items.enumerated() {
+        let newItem = ListItem(name: item.name, done: false)
+        l.items[index] = newItem
+    }
+    lists[0] = l
+    save(lists: lists)
+}

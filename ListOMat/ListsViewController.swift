@@ -150,14 +150,7 @@ class ListsViewController: UITableViewController, ListViewControllerDelegate, Po
             formatter.dateStyle = .medium
             formatter.timeStyle = .none
 
-            let sourceList = self.lists[indexPath.row]
-            ListOMat.addList(to: &self.lists, name: sourceList.name + " (\(formatter.string(from: Date())))", at: 0)
-            var l = self.lists[0]
-            for i in sourceList.items {
-                l.addItem(name: i.name, at: l.items.count)
-            }
-            self.lists[0] = l
-            ListOMat.save(lists: self.lists)
+            ListOMat.copyList(from: &self.lists, atIndex: indexPath.row, name: self.lists[indexPath.row].name + " (\(formatter.string(from: Date())))", toIndex: 0)
 
             let indexPath = IndexPath(row: 0, section: 0)
             self.tableView.insertRows(at: [indexPath], with: .automatic)
