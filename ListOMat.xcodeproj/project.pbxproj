@@ -24,6 +24,9 @@
 		9AE4029C2030895F00C33404 /* ListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE4029B2030895F00C33404 /* ListModels.swift */; };
 		9AE4029E20308A5D00C33404 /* ListStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE4029D20308A5D00C33404 /* ListStore.swift */; };
 		9AE402A02035B2CC00C33404 /* PopupTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE4029F2035B2CC00C33404 /* PopupTextFieldView.swift */; };
+		9AEC474120CC7819002B17A4 /* ListOMatCustomIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9AEC474020CC7819002B17A4 /* ListOMatCustomIntents.intentdefinition */; };
+		9AEC474220CC7819002B17A4 /* ListOMatCustomIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9AEC474020CC7819002B17A4 /* ListOMatCustomIntents.intentdefinition */; };
+		9AEC474420CDF2D0002B17A4 /* CopyListIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEC474320CDF2D0002B17A4 /* CopyListIntentHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +74,8 @@
 		9AE4029B2030895F00C33404 /* ListModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListModels.swift; sourceTree = "<group>"; };
 		9AE4029D20308A5D00C33404 /* ListStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListStore.swift; sourceTree = "<group>"; };
 		9AE4029F2035B2CC00C33404 /* PopupTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupTextFieldView.swift; sourceTree = "<group>"; };
+		9AEC474020CC7819002B17A4 /* ListOMatCustomIntents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = ListOMatCustomIntents.intentdefinition; sourceTree = "<group>"; };
+		9AEC474320CDF2D0002B17A4 /* CopyListIntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyListIntentHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +104,7 @@
 				9AC8BE6B203B205D00CCC7B8 /* IntentHandler.swift */,
 				9A5E606F203E3D2E006CAB2D /* SearchItemsIntentHandler.swift */,
 				9A7C6E37204F2D42000F0118 /* AddItemsIntentHandler.swift */,
+				9AEC474320CDF2D0002B17A4 /* CopyListIntentHandler.swift */,
 			);
 			path = ListOMatIntents;
 			sourceTree = "<group>";
@@ -106,6 +112,7 @@
 		9AE4027B2030852700C33404 = {
 			isa = PBXGroup;
 			children = (
+				9AEC474020CC7819002B17A4 /* ListOMatCustomIntents.intentdefinition */,
 				9AE402862030852800C33404 /* ListOMat */,
 				9AC8BE6A203B205D00CCC7B8 /* ListOMatIntents */,
 				9AE402852030852800C33404 /* Products */,
@@ -261,10 +268,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AEC474420CDF2D0002B17A4 /* CopyListIntentHandler.swift in Sources */,
 				9A5E606E203B2B15006CAB2D /* ListModels.swift in Sources */,
 				9A5E6070203E3D2E006CAB2D /* SearchItemsIntentHandler.swift in Sources */,
 				9A7C6E38204F2D42000F0118 /* AddItemsIntentHandler.swift in Sources */,
 				9AC8BE6C203B205D00CCC7B8 /* IntentHandler.swift in Sources */,
+				9AEC474220CC7819002B17A4 /* ListOMatCustomIntents.intentdefinition in Sources */,
 				9A5E606D203B2B0E006CAB2D /* ListStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -274,6 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AE4028C2030852800C33404 /* ListViewController.swift in Sources */,
+				9AEC474120CC7819002B17A4 /* ListOMatCustomIntents.intentdefinition in Sources */,
 				9AE402A02035B2CC00C33404 /* PopupTextFieldView.swift in Sources */,
 				9AE4028A2030852800C33404 /* ListsViewController.swift in Sources */,
 				9AE4029E20308A5D00C33404 /* ListStore.swift in Sources */,

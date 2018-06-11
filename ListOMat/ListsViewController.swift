@@ -17,6 +17,8 @@ class ListsViewController: UITableViewController, ListViewControllerDelegate, Po
 
     var popupTextField: PopupTextFieldView? = nil
 
+    private var notification: NSObjectProtocol?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,6 +35,22 @@ class ListsViewController: UITableViewController, ListViewControllerDelegate, Po
         }
 
         INPreferences.requestSiriAuthorization { (status) in }
+
+        notification = NotificationCenter.default.addObserver(forName: UIApplication.willEnterForegroundNotification, object: nil, queue: .main) {
+            [weak self] notification in
+
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                self.lists = loadLists()
+                self.tableView.reloadData()
+            }
+        }
+    }
+
+    deinit {
+        if let notification = notification {
+            NotificationCenter.default.removeObserver(notification)
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -133,28 +151,50 @@ class ListsViewController: UITableViewController, ListViewControllerDelegate, Po
         return UIContextualAction(style: .destructive, title: "Delete") {
             [weak self] (contextAction: UIContextualAction, sourceView: UIView, completionHandler: (Bool) -> Void) in
 
-            guard let self = self else { return }
+            guard let self = self else {
+                completionHandler(false)
+                return
+            }
             removeList(from: &self.lists, at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .fade)
             completionHandler(true)
         }
     }
 
+    func copyList(at index: Int) -> List {
+        let l = ListOMat.copyList(from: &self.lists, atIndex: index, toIndex: 0)
+
+        let indexPath = IndexPath(row: 0, section: 0)
+        self.tableView.insertRows(at: [indexPath], with: .automatic)
+        return l
+    }
+
+    func show(error: Error?) {
+        guard let error = error else { return }
+        print(error.localizedDescription)
+    }
+
+    @available(iOS 12, *)
+    func donateCopyListInteraction(listName: String) {
+        let copyListInteraction = CopyListIntent()
+        copyListInteraction.list = listName
+        copyListInteraction.suggestedInvocationPhrase = "Copy \(listName)"
+        let interaction = INInteraction(intent: copyListInteraction, response: nil)
+        interaction.donate { [weak self] (error) in
+            self?.show(error: error)
+        }
+    }
+
     func copyAction(forRowAt indexPath: IndexPath) -> UIContextualAction {
-        return UIContextualAction(style: .normal, title: "Copy") {
-            [weak self] (contextAction: UIContextualAction, sourceView: UIView, completionHandler: (Bool) -> Void) in
+        return UIContextualAction(style: .normal, title: "Copy") { [weak self]
+            (contextAction: UIContextualAction, sourceView: UIView, completionHandler: (Bool) -> Void) in
 
-            guard let self = self else { return }
-
-            let formatter = DateFormatter()
-            formatter.dateStyle = .medium
-            formatter.timeStyle = .none
-
-            ListOMat.copyList(from: &self.lists, atIndex: indexPath.row, name: self.lists[indexPath.row].name + " (\(formatter.string(from: Date())))", toIndex: 0)
-
-            let indexPath = IndexPath(row: 0, section: 0)
-            self.tableView.insertRows(at: [indexPath], with: .automatic)
-
+            let name = self?.lists[indexPath.row].name
+            if let _ = self?.copyList(at: indexPath.row), let name = name {
+                if #available(iOS 12, *) {
+                    self?.donateCopyListInteraction(listName: name)
+                }
+            }
             completionHandler(true)
         }
     }

@@ -26,10 +26,13 @@
 		<dict>
 			<key>IntentsRestrictedWhileLocked</key>
 			<array/>
+			<key>IntentsRestrictedWhileProtectedDataUnavailable</key>
+			<array/>
 			<key>IntentsSupported</key>
 			<array>
-				<string>INSearchForNotebookItemsIntent</string>
+				<string>CopyListIntent</string>
 				<string>INAddTasksIntent</string>
+				<string>INSearchForNotebookItemsIntent</string>
 			</array>
 		</dict>
 		<key>NSExtensionPointIdentifier</key>

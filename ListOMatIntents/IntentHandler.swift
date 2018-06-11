@@ -16,6 +16,11 @@ class IntentHandler: INExtension {
         case is INAddTasksIntent:
             return AddItemsIntentHandler()
         default:
+            if #available(iOS 12, *) {
+                if intent is CopyListIntent {
+                    return CopyListIntentHandler()
+                }
+            }
             return nil
         }
     }
