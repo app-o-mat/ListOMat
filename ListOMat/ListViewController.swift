@@ -101,7 +101,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return true
     }
 
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard var list = list else { return }
 
         if editingStyle == .delete {

@@ -19,8 +19,8 @@ class ListsViewController: UITableViewController, ListViewControllerDelegate, Po
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        popupTextField = Bundle.main.loadNibNamed("PopupTextFieldView", owner: self, options: [:])?.first as! PopupTextFieldView
-        popupTextField.delegate = self
+        popupTextField = Bundle.main.loadNibNamed("PopupTextFieldView", owner: self, options: [:])?.first as? PopupTextFieldView
+        popupTextField?.delegate = self
 
         navigationItem.leftBarButtonItem = editButtonItem
 
@@ -111,7 +111,7 @@ class ListsViewController: UITableViewController, ListViewControllerDelegate, Po
         return true
     }
 
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             removeList(from: &lists, at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
