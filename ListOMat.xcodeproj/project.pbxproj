@@ -303,7 +303,7 @@
 				DEVELOPMENT_TEAM = 85H8KB76TX;
 				INFOPLIST_FILE = ListOMat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.app-o-mat.ListOMat";
+				PRODUCT_BUNDLE_IDENTIFIER = com.loufranco.ListOMat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -318,7 +318,7 @@
 				DEVELOPMENT_TEAM = 85H8KB76TX;
 				INFOPLIST_FILE = ListOMat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.app-o-mat.ListOMat";
+				PRODUCT_BUNDLE_IDENTIFIER = com.loufranco.ListOMat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
