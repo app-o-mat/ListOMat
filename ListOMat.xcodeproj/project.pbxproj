@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9AC8BE54203B067600CCC7B8 /* PopupTextFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AC8BE53203B067600CCC7B8 /* PopupTextFieldView.xib */; };
+		9AD17A4721EBDF6E007E7AE2 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD17A4621EBDF6E007E7AE2 /* IntentHandler.swift */; };
+		9AD17A4B21EBDF6E007E7AE2 /* ListOMatIntents.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9AD17A4421EBDF6E007E7AE2 /* ListOMatIntents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9AE402882030852800C33404 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE402872030852800C33404 /* AppDelegate.swift */; };
 		9AE4028A2030852800C33404 /* ListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE402892030852800C33404 /* ListsViewController.swift */; };
 		9AE4028C2030852800C33404 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE4028B2030852800C33404 /* ListViewController.swift */; };
@@ -19,8 +21,37 @@
 		9AE402A02035B2CC00C33404 /* PopupTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE4029F2035B2CC00C33404 /* PopupTextFieldView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		9AD17A4921EBDF6E007E7AE2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9AE4027C2030852700C33404 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9AD17A4321EBDF6E007E7AE2;
+			remoteInfo = ListOMatIntents;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9AD17A4F21EBDF6E007E7AE2 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				9AD17A4B21EBDF6E007E7AE2 /* ListOMatIntents.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		9AC8BE53203B067600CCC7B8 /* PopupTextFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopupTextFieldView.xib; sourceTree = "<group>"; };
+		9AD17A4421EBDF6E007E7AE2 /* ListOMatIntents.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ListOMatIntents.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AD17A4621EBDF6E007E7AE2 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
+		9AD17A4821EBDF6E007E7AE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9AD17A5021EBE078007E7AE2 /* ListOMat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ListOMat.entitlements; sourceTree = "<group>"; };
+		9AD17A5121EBE0A8007E7AE2 /* ListOMatIntents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ListOMatIntents.entitlements; sourceTree = "<group>"; };
 		9AE402842030852800C33404 /* ListOMat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ListOMat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AE402872030852800C33404 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9AE402892030852800C33404 /* ListsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +66,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		9AD17A4121EBDF6E007E7AE2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9AE402812030852800C33404 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -45,10 +83,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9AD17A4521EBDF6E007E7AE2 /* ListOMatIntents */ = {
+			isa = PBXGroup;
+			children = (
+				9AD17A5121EBE0A8007E7AE2 /* ListOMatIntents.entitlements */,
+				9AD17A4621EBDF6E007E7AE2 /* IntentHandler.swift */,
+				9AD17A4821EBDF6E007E7AE2 /* Info.plist */,
+			);
+			path = ListOMatIntents;
+			sourceTree = "<group>";
+		};
 		9AE4027B2030852700C33404 = {
 			isa = PBXGroup;
 			children = (
 				9AE402862030852800C33404 /* ListOMat */,
+				9AD17A4521EBDF6E007E7AE2 /* ListOMatIntents */,
 				9AE402852030852800C33404 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -57,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				9AE402842030852800C33404 /* ListOMat.app */,
+				9AD17A4421EBDF6E007E7AE2 /* ListOMatIntents.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -64,6 +114,7 @@
 		9AE402862030852800C33404 /* ListOMat */ = {
 			isa = PBXGroup;
 			children = (
+				9AD17A5021EBE078007E7AE2 /* ListOMat.entitlements */,
 				9AE402872030852800C33404 /* AppDelegate.swift */,
 				9AE402892030852800C33404 /* ListsViewController.swift */,
 				9AE4028B2030852800C33404 /* ListViewController.swift */,
@@ -82,6 +133,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		9AD17A4321EBDF6E007E7AE2 /* ListOMatIntents */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9AD17A4C21EBDF6E007E7AE2 /* Build configuration list for PBXNativeTarget "ListOMatIntents" */;
+			buildPhases = (
+				9AD17A4021EBDF6E007E7AE2 /* Sources */,
+				9AD17A4121EBDF6E007E7AE2 /* Frameworks */,
+				9AD17A4221EBDF6E007E7AE2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ListOMatIntents;
+			productName = ListOMatIntents;
+			productReference = 9AD17A4421EBDF6E007E7AE2 /* ListOMatIntents.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		9AE402832030852800C33404 /* ListOMat */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9AE402982030852800C33404 /* Build configuration list for PBXNativeTarget "ListOMat" */;
@@ -89,10 +157,12 @@
 				9AE402802030852800C33404 /* Sources */,
 				9AE402812030852800C33404 /* Frameworks */,
 				9AE402822030852800C33404 /* Resources */,
+				9AD17A4F21EBDF6E007E7AE2 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				9AD17A4A21EBDF6E007E7AE2 /* PBXTargetDependency */,
 			);
 			name = ListOMat;
 			productName = ListOMat;
@@ -105,14 +175,31 @@
 		9AE4027C2030852700C33404 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
+				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "App-o-Mat";
 				TargetAttributes = {
+					9AD17A4321EBDF6E007E7AE2 = {
+						CreatedOnToolsVersion = 10.1;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
 					9AE402832030852800C33404 = {
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.Siri = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -130,11 +217,19 @@
 			projectRoot = "";
 			targets = (
 				9AE402832030852800C33404 /* ListOMat */,
+				9AD17A4321EBDF6E007E7AE2 /* ListOMatIntents */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		9AD17A4221EBDF6E007E7AE2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9AE402822030852800C33404 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -149,6 +244,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		9AD17A4021EBDF6E007E7AE2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AD17A4721EBDF6E007E7AE2 /* IntentHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9AE402802030852800C33404 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -163,6 +266,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9AD17A4A21EBDF6E007E7AE2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9AD17A4321EBDF6E007E7AE2 /* ListOMatIntents */;
+			targetProxy = 9AD17A4921EBDF6E007E7AE2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		9AE4028D2030852800C33404 /* Main.storyboard */ = {
@@ -184,6 +295,45 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		9AD17A4D21EBDF6E007E7AE2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = ListOMatIntents/ListOMatIntents.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 85H8KB76TX;
+				INFOPLIST_FILE = ListOMatIntents/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.loufranco.ListOMat.ListOMatIntents;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9AD17A4E21EBDF6E007E7AE2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = ListOMatIntents/ListOMatIntents.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 85H8KB76TX;
+				INFOPLIST_FILE = ListOMatIntents/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.loufranco.ListOMat.ListOMatIntents;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		9AE402962030852800C33404 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -298,7 +448,9 @@
 		9AE402992030852800C33404 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ListOMat/ListOMat.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 85H8KB76TX;
 				INFOPLIST_FILE = ListOMat/Info.plist;
@@ -313,7 +465,9 @@
 		9AE4029A2030852800C33404 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ListOMat/ListOMat.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 85H8KB76TX;
 				INFOPLIST_FILE = ListOMat/Info.plist;
@@ -328,6 +482,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		9AD17A4C21EBDF6E007E7AE2 /* Build configuration list for PBXNativeTarget "ListOMatIntents" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9AD17A4D21EBDF6E007E7AE2 /* Debug */,
+				9AD17A4E21EBDF6E007E7AE2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		9AE4027F2030852700C33404 /* Build configuration list for PBXProject "ListOMat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
