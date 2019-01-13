@@ -10,8 +10,12 @@ import Foundation
 
 private let fileName = "lists.json"
 
+func documentsFolder() -> URL? {
+    return FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.loufranco.ListOMat")
+}
+
 func loadLists() -> Lists {
-    guard let docsDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+    guard let docsDir = documentsFolder() else {
         return []
     }
 
@@ -36,7 +40,7 @@ func loadLists() -> Lists {
 }
 
 func save(lists: Lists) {
-    guard let docsDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+    guard let docsDir = documentsFolder() else {
         fatalError("no docs dir")
     }
 
