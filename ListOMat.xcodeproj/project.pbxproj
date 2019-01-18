@@ -10,6 +10,10 @@
 		9AC8BE54203B067600CCC7B8 /* PopupTextFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AC8BE53203B067600CCC7B8 /* PopupTextFieldView.xib */; };
 		9AD17A4721EBDF6E007E7AE2 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD17A4621EBDF6E007E7AE2 /* IntentHandler.swift */; };
 		9AD17A4B21EBDF6E007E7AE2 /* ListOMatIntents.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9AD17A4421EBDF6E007E7AE2 /* ListOMatIntents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		9AD17A5B21EE0D5C007E7AE2 /* ListStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE4029D20308A5D00C33404 /* ListStore.swift */; };
+		9AD17A5C21EE0D6D007E7AE2 /* ListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE4029B2030895F00C33404 /* ListModels.swift */; };
+		9AD17A5E21EE0D7D007E7AE2 /* ListOMatIntentsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD17A5D21EE0D7D007E7AE2 /* ListOMatIntentsHandler.swift */; };
+		9AD17A6021EE0D92007E7AE2 /* AddItemsIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD17A5F21EE0D92007E7AE2 /* AddItemsIntentHandler.swift */; };
 		9AE402882030852800C33404 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE402872030852800C33404 /* AppDelegate.swift */; };
 		9AE4028A2030852800C33404 /* ListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE402892030852800C33404 /* ListsViewController.swift */; };
 		9AE4028C2030852800C33404 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE4028B2030852800C33404 /* ListViewController.swift */; };
@@ -52,6 +56,8 @@
 		9AD17A4821EBDF6E007E7AE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9AD17A5021EBE078007E7AE2 /* ListOMat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ListOMat.entitlements; sourceTree = "<group>"; };
 		9AD17A5121EBE0A8007E7AE2 /* ListOMatIntents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ListOMatIntents.entitlements; sourceTree = "<group>"; };
+		9AD17A5D21EE0D7D007E7AE2 /* ListOMatIntentsHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOMatIntentsHandler.swift; sourceTree = "<group>"; };
+		9AD17A5F21EE0D92007E7AE2 /* AddItemsIntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemsIntentHandler.swift; sourceTree = "<group>"; };
 		9AE402842030852800C33404 /* ListOMat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ListOMat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AE402872030852800C33404 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9AE402892030852800C33404 /* ListsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +95,8 @@
 				9AD17A5121EBE0A8007E7AE2 /* ListOMatIntents.entitlements */,
 				9AD17A4621EBDF6E007E7AE2 /* IntentHandler.swift */,
 				9AD17A4821EBDF6E007E7AE2 /* Info.plist */,
+				9AD17A5D21EE0D7D007E7AE2 /* ListOMatIntentsHandler.swift */,
+				9AD17A5F21EE0D92007E7AE2 /* AddItemsIntentHandler.swift */,
 			);
 			path = ListOMatIntents;
 			sourceTree = "<group>";
@@ -248,7 +256,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AD17A5C21EE0D6D007E7AE2 /* ListModels.swift in Sources */,
 				9AD17A4721EBDF6E007E7AE2 /* IntentHandler.swift in Sources */,
+				9AD17A6021EE0D92007E7AE2 /* AddItemsIntentHandler.swift in Sources */,
+				9AD17A5B21EE0D5C007E7AE2 /* ListStore.swift in Sources */,
+				9AD17A5E21EE0D7D007E7AE2 /* ListOMatIntentsHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
