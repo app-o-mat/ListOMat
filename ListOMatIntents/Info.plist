@@ -29,6 +29,7 @@
 			<key>IntentsSupported</key>
 			<array>
 				<string>INAddTasksIntent</string>
+				<string>INSearchForNotebookItemsIntent</string>
 			</array>
 		</dict>
 		<key>NSExtensionPointIdentifier</key>

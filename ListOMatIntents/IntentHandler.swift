@@ -14,6 +14,8 @@ class IntentHandler: INExtension {
         switch intent {
         case is INAddTasksIntent:
             return AddItemsIntentHandler()
+        case is INSearchForNotebookItemsIntent:
+            return SearchItemsIntentHandler()
         default:
             return self
         }
