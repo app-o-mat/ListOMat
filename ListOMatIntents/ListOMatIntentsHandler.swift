@@ -49,4 +49,19 @@ class ListOMatIntentsHandler: NSObject {
             completion(.disambiguation(with: taskLists))
         }
     }
+
+    public func completeResolveListName(with possibleLists: [INSpeakableString], for listName: INSpeakableString, with completion: @escaping (INSpeakableStringResolutionResult) -> Void) {
+        switch possibleLists.count {
+        case 0:
+            completion(.unsupported())
+        case 1:
+            if possibleLists[0].spokenPhrase.lowercased() == listName.spokenPhrase.lowercased() {
+                completion(.success(with: possibleLists[0]))
+            } else {
+                completion(.confirmationRequired(with: possibleLists[0]))
+            }
+        default:
+            completion(.disambiguation(with: possibleLists))
+        }
+    }
 }
