@@ -61,3 +61,29 @@ func removeListItem(from list: inout List, at index: Int) {
 func toggleDoneListItem(from list: inout List, at index: Int) {
     list.toggleDone(at: index)
 }
+
+@discardableResult
+func copyList(from lists: inout Lists, atIndex: Int, toIndex: Int) -> List {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .medium
+    formatter.timeStyle = .none
+
+    let name = lists[atIndex].name + " (\(formatter.string(from: Date())))"
+
+    return copyList(from: &lists, atIndex: atIndex, name: name, toIndex: toIndex)
+}
+
+@discardableResult
+func copyList(from lists: inout Lists, atIndex: Int, name: String, toIndex: Int) -> List {
+    let sourceList = lists[atIndex]
+    lists.insert(List(name: name, items: sourceList.items), at: toIndex)
+
+    var l = lists[0]
+    for (index, item) in l.items.enumerated() {
+        let newItem = ListItem(name: item.name, done: false)
+        l.items[index] = newItem
+    }
+    lists[0] = l
+    save(lists: lists)
+    return l
+}

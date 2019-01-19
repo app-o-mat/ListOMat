@@ -15,7 +15,9 @@ class ListsViewController: UITableViewController, ListViewControllerDelegate, Po
     var lists = loadLists()
     var listIndex: Int = 0
 
-    var popupTextField: PopupTextFieldView! = nil
+    var popupTextField: PopupTextFieldView? = nil
+
+    private var notification: NSObjectProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +35,22 @@ class ListsViewController: UITableViewController, ListViewControllerDelegate, Po
         }
 
         INPreferences.requestSiriAuthorization { (status) in }
+
+        notification = NotificationCenter.default.addObserver(forName: UIApplication.willEnterForegroundNotification, object: nil, queue: .main) {
+            [weak self] notification in
+
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                self.lists = loadLists()
+                self.tableView.reloadData()
+            }
+        }
+    }
+
+    deinit {
+        if let notification = notification {
+            NotificationCenter.default.removeObserver(notification)
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -52,8 +70,13 @@ class ListsViewController: UITableViewController, ListViewControllerDelegate, Po
 
     @objc
     func addListTapped(_ sender: Any) {
-        guard let mainView = self.view.superview else { return }
-        guard addPopupTextField(mainView: mainView, popupTextField: popupTextField) else { return }
+        guard
+            let mainView = self.view.superview,
+            let popupTextField = self.popupTextField,
+            addPopupTextField(mainView: mainView, popupTextField: popupTextField)
+        else {
+                return
+        }
 
         navigationItem.rightBarButtonItem?.isEnabled = false
         let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(addListCancelTapped(_:)))
@@ -73,6 +96,7 @@ class ListsViewController: UITableViewController, ListViewControllerDelegate, Po
     }
 
     func dismissPopupTextField() {
+        guard let popupTextField = self.popupTextField else { return }
         dismiss(popupTextField: popupTextField)
         navigationItem.rightBarButtonItem?.isEnabled = true
         navigationItem.leftBarButtonItem = editButtonItem
@@ -121,6 +145,59 @@ class ListsViewController: UITableViewController, ListViewControllerDelegate, Po
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
+    }
+
+    func deleteAction(forRowAt indexPath: IndexPath) -> UIContextualAction {
+        return UIContextualAction(style: .destructive, title: "Delete") {
+            [weak self] (contextAction: UIContextualAction, sourceView: UIView, completionHandler: (Bool) -> Void) in
+
+            guard let self = self else {
+                completionHandler(false)
+                return
+            }
+            removeList(from: &self.lists, at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
+            completionHandler(true)
+        }
+    }
+
+    func copyList(at index: Int) -> List {
+        let l = ListOMat.copyList(from: &self.lists, atIndex: index, toIndex: 0)
+
+        let indexPath = IndexPath(row: 0, section: 0)
+        self.tableView.insertRows(at: [indexPath], with: .automatic)
+        return l
+    }
+
+    func show(error: Error?) {
+        guard let error = error else { return }
+        print(error.localizedDescription)
+    }
+
+    @available(iOS 12, *)
+    func donateCopyListInteraction(listName: String) {
+
+    }
+
+    func copyAction(forRowAt indexPath: IndexPath) -> UIContextualAction {
+        return UIContextualAction(style: .normal, title: "Copy") { [weak self]
+            (contextAction: UIContextualAction, sourceView: UIView, completionHandler: (Bool) -> Void) in
+
+            let name = self?.lists[indexPath.row].name
+            if let _ = self?.copyList(at: indexPath.row), let name = name {
+                if #available(iOS 12, *) {
+                    self?.donateCopyListInteraction(listName: name)
+                }
+            }
+            completionHandler(true)
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        return UISwipeActionsConfiguration(actions: [
+            deleteAction(forRowAt: indexPath),
+            copyAction(forRowAt: indexPath),
+            ])
     }
 
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
