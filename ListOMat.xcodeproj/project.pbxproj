@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A339EDF21F4D03D00E0D3A0 /* ResetListIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A339EDE21F4D03D00E0D3A0 /* ResetListIntentHandler.swift */; };
 		9AB58DC021F3C80500A835BB /* SearchItemsIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB58DBF21F3C80500A835BB /* SearchItemsIntentHandler.swift */; };
 		9AB58DC321F3CCC500A835BB /* ListOMatIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9AB58DC121F3CCC500A835BB /* ListOMatIntents.intentdefinition */; };
 		9AB58DC621F3CDE200A835BB /* ListOMatIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9AB58DC121F3CCC500A835BB /* ListOMatIntents.intentdefinition */; };
@@ -54,6 +55,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9A339EDE21F4D03D00E0D3A0 /* ResetListIntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetListIntentHandler.swift; sourceTree = "<group>"; };
 		9AB58DBF21F3C80500A835BB /* SearchItemsIntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemsIntentHandler.swift; sourceTree = "<group>"; };
 		9AB58DC121F3CCC500A835BB /* ListOMatIntents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = ListOMatIntents.intentdefinition; sourceTree = "<group>"; };
 		9AB58DC721F3CE5000A835BB /* CopyListIntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyListIntentHandler.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				9AD17A5F21EE0D92007E7AE2 /* AddItemsIntentHandler.swift */,
 				9AB58DBF21F3C80500A835BB /* SearchItemsIntentHandler.swift */,
 				9AB58DC721F3CE5000A835BB /* CopyListIntentHandler.swift */,
+				9A339EDE21F4D03D00E0D3A0 /* ResetListIntentHandler.swift */,
 			);
 			path = ListOMatIntents;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AB58DC321F3CCC500A835BB /* ListOMatIntents.intentdefinition in Sources */,
+				9A339EDF21F4D03D00E0D3A0 /* ResetListIntentHandler.swift in Sources */,
 				9AD17A5C21EE0D6D007E7AE2 /* ListModels.swift in Sources */,
 				9AB58DC021F3C80500A835BB /* SearchItemsIntentHandler.swift in Sources */,
 				9AD17A4721EBDF6E007E7AE2 /* IntentHandler.swift in Sources */,
