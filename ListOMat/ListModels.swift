@@ -87,3 +87,16 @@ func copyList(from lists: inout Lists, atIndex: Int, name: String, toIndex: Int)
     save(lists: lists)
     return l
 }
+
+@discardableResult
+func resetList(from lists: inout Lists, atIndex: Int) -> List {
+    var list = lists[atIndex]
+
+    for (index, item) in list.items.enumerated() {
+        let newItem = ListItem(name: item.name, done: false)
+        list.items[index] = newItem
+    }
+    lists[atIndex] = list
+    save(lists: lists)
+    return list
+}

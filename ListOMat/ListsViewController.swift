@@ -169,6 +169,14 @@ class ListsViewController: UITableViewController, ListViewControllerDelegate, Po
         return l
     }
 
+    func resetList(at index: Int) -> List {
+        let l = ListOMat.resetList(from: &self.lists, atIndex: index)
+
+        let indexPath = IndexPath(row: index, section: 0)
+        self.tableView.reloadRows(at: [indexPath], with: .automatic)
+        return l
+    }
+
     func show(error: Error?) {
         guard let error = error else { return }
         print(error.localizedDescription)
@@ -199,10 +207,29 @@ class ListsViewController: UITableViewController, ListViewControllerDelegate, Po
         }
     }
 
+    @available(iOS 12, *)
+    func donateResetListInteraction(listName: String) {
+    }
+
+    func resetAction(forRowAt indexPath: IndexPath) -> UIContextualAction {
+        return UIContextualAction(style: .normal, title: "Reset") { [weak self]
+            (contextAction: UIContextualAction, sourceView: UIView, completionHandler: (Bool) -> Void) in
+
+            let name = self?.lists[indexPath.row].name
+            if let _ = self?.resetList(at: indexPath.row), let name = name {
+                if #available(iOS 12, *) {
+                    self?.donateResetListInteraction(listName: name)
+                }
+            }
+            completionHandler(true)
+        }
+    }
+
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         return UISwipeActionsConfiguration(actions: [
             deleteAction(forRowAt: indexPath),
             copyAction(forRowAt: indexPath),
+            resetAction(forRowAt: indexPath),
             ])
     }
 
