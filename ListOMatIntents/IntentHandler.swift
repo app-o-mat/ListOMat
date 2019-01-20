@@ -12,6 +12,8 @@ class IntentHandler: INExtension {
     
     override func handler(for intent: INIntent) -> Any {
         switch intent {
+        case is CopyListIntent:
+            return CopyListIntentHandler()
         case is INAddTasksIntent:
             return AddItemsIntentHandler()
         case is INSearchForNotebookItemsIntent:
