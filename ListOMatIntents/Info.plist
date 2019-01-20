@@ -26,8 +26,11 @@
 		<dict>
 			<key>IntentsRestrictedWhileLocked</key>
 			<array/>
+			<key>IntentsRestrictedWhileProtectedDataUnavailable</key>
+			<array/>
 			<key>IntentsSupported</key>
 			<array>
+				<string>CopyListIntent</string>
 				<string>INAddTasksIntent</string>
 				<string>INSearchForNotebookItemsIntent</string>
 			</array>

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		9AB58DC021F3C80500A835BB /* SearchItemsIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB58DBF21F3C80500A835BB /* SearchItemsIntentHandler.swift */; };
+		9AB58DC321F3CCC500A835BB /* ListOMatIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9AB58DC121F3CCC500A835BB /* ListOMatIntents.intentdefinition */; };
+		9AB58DC621F3CDE200A835BB /* ListOMatIntents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9AB58DC121F3CCC500A835BB /* ListOMatIntents.intentdefinition */; };
+		9AB58DC821F3CE5000A835BB /* CopyListIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB58DC721F3CE5000A835BB /* CopyListIntentHandler.swift */; };
 		9AC8BE54203B067600CCC7B8 /* PopupTextFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AC8BE53203B067600CCC7B8 /* PopupTextFieldView.xib */; };
 		9AD17A4721EBDF6E007E7AE2 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD17A4621EBDF6E007E7AE2 /* IntentHandler.swift */; };
 		9AD17A4B21EBDF6E007E7AE2 /* ListOMatIntents.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9AD17A4421EBDF6E007E7AE2 /* ListOMatIntents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -52,6 +55,8 @@
 
 /* Begin PBXFileReference section */
 		9AB58DBF21F3C80500A835BB /* SearchItemsIntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemsIntentHandler.swift; sourceTree = "<group>"; };
+		9AB58DC121F3CCC500A835BB /* ListOMatIntents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = ListOMatIntents.intentdefinition; sourceTree = "<group>"; };
+		9AB58DC721F3CE5000A835BB /* CopyListIntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyListIntentHandler.swift; sourceTree = "<group>"; };
 		9AC8BE53203B067600CCC7B8 /* PopupTextFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopupTextFieldView.xib; sourceTree = "<group>"; };
 		9AD17A4421EBDF6E007E7AE2 /* ListOMatIntents.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ListOMatIntents.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AD17A4621EBDF6E007E7AE2 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
@@ -100,6 +105,7 @@
 				9AD17A5D21EE0D7D007E7AE2 /* ListOMatIntentsHandler.swift */,
 				9AD17A5F21EE0D92007E7AE2 /* AddItemsIntentHandler.swift */,
 				9AB58DBF21F3C80500A835BB /* SearchItemsIntentHandler.swift */,
+				9AB58DC721F3CE5000A835BB /* CopyListIntentHandler.swift */,
 			);
 			path = ListOMatIntents;
 			sourceTree = "<group>";
@@ -107,6 +113,7 @@
 		9AE4027B2030852700C33404 = {
 			isa = PBXGroup;
 			children = (
+				9AB58DC121F3CCC500A835BB /* ListOMatIntents.intentdefinition */,
 				9AE402862030852800C33404 /* ListOMat */,
 				9AD17A4521EBDF6E007E7AE2 /* ListOMatIntents */,
 				9AE402852030852800C33404 /* Products */,
@@ -259,10 +266,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AB58DC321F3CCC500A835BB /* ListOMatIntents.intentdefinition in Sources */,
 				9AD17A5C21EE0D6D007E7AE2 /* ListModels.swift in Sources */,
 				9AB58DC021F3C80500A835BB /* SearchItemsIntentHandler.swift in Sources */,
 				9AD17A4721EBDF6E007E7AE2 /* IntentHandler.swift in Sources */,
 				9AD17A6021EE0D92007E7AE2 /* AddItemsIntentHandler.swift in Sources */,
+				9AB58DC821F3CE5000A835BB /* CopyListIntentHandler.swift in Sources */,
 				9AD17A5B21EE0D5C007E7AE2 /* ListStore.swift in Sources */,
 				9AD17A5E21EE0D7D007E7AE2 /* ListOMatIntentsHandler.swift in Sources */,
 			);
@@ -272,6 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AB58DC621F3CDE200A835BB /* ListOMatIntents.intentdefinition in Sources */,
 				9AE4028C2030852800C33404 /* ListViewController.swift in Sources */,
 				9AE402A02035B2CC00C33404 /* PopupTextFieldView.swift in Sources */,
 				9AE4028A2030852800C33404 /* ListsViewController.swift in Sources */,
