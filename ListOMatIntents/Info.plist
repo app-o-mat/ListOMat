@@ -33,6 +33,7 @@
 				<string>CopyListIntent</string>
 				<string>INAddTasksIntent</string>
 				<string>INSearchForNotebookItemsIntent</string>
+				<string>ResetListIntent</string>
 			</array>
 		</dict>
 		<key>NSExtensionPointIdentifier</key>
