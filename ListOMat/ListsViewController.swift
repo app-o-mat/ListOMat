@@ -176,7 +176,13 @@ class ListsViewController: UITableViewController, ListViewControllerDelegate, Po
 
     @available(iOS 12, *)
     func donateCopyListInteraction(listName: String) {
-
+        let copyListInteraction = CopyListIntent()
+        copyListInteraction.list = listName
+        copyListInteraction.suggestedInvocationPhrase = "Copy \(listName)"
+        let interaction = INInteraction(intent: copyListInteraction, response: nil)
+        interaction.donate { [weak self] (error) in
+            self?.show(error: error)
+        }
     }
 
     func copyAction(forRowAt indexPath: IndexPath) -> UIContextualAction {
