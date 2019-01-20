@@ -209,6 +209,13 @@ class ListsViewController: UITableViewController, ListViewControllerDelegate, Po
 
     @available(iOS 12, *)
     func donateResetListInteraction(listName: String) {
+        let resetListInteraction = ResetListIntent()
+        resetListInteraction.list = listName
+        resetListInteraction.suggestedInvocationPhrase = "Reset \(listName)"
+        let interaction = INInteraction(intent: resetListInteraction, response: nil)
+        interaction.donate { [weak self] (error) in
+            self?.show(error: error)
+        }
     }
 
     func resetAction(forRowAt indexPath: IndexPath) -> UIContextualAction {
